@@ -1,2 +1,4 @@
 # patches
-Current Riff.CC patches against the codebase.
+Riff.CC is based on Unit3D Community Edition and is largely unmodified.
+
+This repository contains the few patches we use.
