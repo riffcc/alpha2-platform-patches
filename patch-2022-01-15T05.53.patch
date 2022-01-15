@@ -1,0 +1,155 @@
+diff --git a/artisan b/artisan
+old mode 100644
+new mode 100755
+diff --git a/config/other.php b/config/other.php
+index 598cb1479..d4c0dab70 100644
+--- a/config/other.php
++++ b/config/other.php
+@@ -33,7 +33,7 @@ return [
+     |
+     */
+ 
+-    'title' => 'UNIT3D',
++    'title' => 'Riff.CC',
+ 
+     /*
+     |--------------------------------------------------------------------------
+@@ -44,7 +44,7 @@ return [
+     |
+     */
+ 
+-    'subTitle' => 'Built On Laravel',
++    'subTitle' => 'Free the world\'s culture',
+ 
+     /*
+     |--------------------------------------------------------------------------
+@@ -66,7 +66,7 @@ return [
+     |
+     */
+ 
+-    'meta_description' => 'Built On Laravel',
++    'meta_description' => 'Free the world\'s culture.',
+ 
+     /*
+     |--------------------------------------------------------------------------
+@@ -76,7 +76,7 @@ return [
+     | Date Site Was Born
+     |
+     */
+-    'birthdate' => 'December 30th 2017',
++    'birthdate' => 'January 15th 2022',
+ 
+     /*
+     |--------------------------------------------------------------------------
+@@ -109,7 +109,7 @@ return [
+     |
+     */
+ 
+-    'ratio' => 0.4,
++    'ratio' => 0,
+ 
+     /*
+     |--------------------------------------------------------------------------
+@@ -122,7 +122,7 @@ return [
+     | Restricted mode for invites. If set to true, invites will be restricted
+     | Exempt these groups from the invite restrictions
+     */
+-    'invite-only'   => true,
++    'invite-only'   => false,
+     'invite_expire' => '14',
+ 
+     'invites_restriced' => false,
+@@ -175,7 +175,7 @@ return [
+     | True/1 = Enabled
+     | False/0 = Disabled
+     */
+-    'application_signups' => false,
++    'application_signups' => true,
+ 
+     /*
+     |--------------------------------------------------------------------------
+diff --git a/config/unit3d.php b/config/unit3d.php
+old mode 100755
+new mode 100644
+diff --git a/resources/views/home/index.blade.php b/resources/views/home/index.blade.php
+index 3ffed9f7d..1797f7d97 100644
+--- a/resources/views/home/index.blade.php
++++ b/resources/views/home/index.blade.php
+@@ -2,7 +2,7 @@
+ 
+ @section('content')
+     <div class="container-fluid">
+-        @include('blocks.news')
++        @include('blocks.featured')
+     
+         @if (!auth()->user()->chat_hidden)
+             <div id="vue">
+@@ -10,12 +10,12 @@
+             </div>
+         @endif
+     
+-        @include('blocks.featured')
+         @include('blocks.poll')
+         @include('blocks.top_torrents')
+         @include('blocks.top_uploaders')
+         @include('blocks.latest_topics')
+         @include('blocks.latest_posts')
++        @include('blocks.news')
+         @include('blocks.online')
+     </div>
+ @endsection
+diff --git a/resources/views/partials/alerts.blade.php b/resources/views/partials/alerts.blade.php
+index b9b4bd9af..e0081ea88 100644
+--- a/resources/views/partials/alerts.blade.php
++++ b/resources/views/partials/alerts.blade.php
+@@ -1,4 +1,4 @@
+-@if (config('other.freeleech') == true || config('other.invite-only') == false || config('other.doubleup') == true)
++@if (config('other.freeleech') == true || config('other.doubleup') == true)
+     <div class="alert alert-info" x-data="timer()" x-init="start()">
+         <div class="text-center">
+             <span>
+diff --git a/resources/views/partials/footer.blade.php b/resources/views/partials/footer.blade.php
+index 89ba3d601..cbe60582a 100644
+--- a/resources/views/partials/footer.blade.php
++++ b/resources/views/partials/footer.blade.php
+@@ -58,8 +58,6 @@
+         <div class="col-md-2 l-footer-section">
+             <h2 class="l-footer-section-title">@lang('common.other')</h2>
+             <ul>
+-                <li><a href="https://github.com/sponsors/HDVinnie" target="_blank"
+-                        class="btn btn-xs btn-primary">@lang('common.sponsor')</a></li>
+                 <li><a href="https://github.com/HDInnovations/UNIT3D" target="_blank"
+                         class="btn btn-xs btn-primary">@lang('common.powered-by')</a></li>
+             </ul>
+diff --git a/resources/views/partials/top_nav.blade.php b/resources/views/partials/top_nav.blade.php
+index 7df51a1d8..73e4e8823 100644
+--- a/resources/views/partials/top_nav.blade.php
++++ b/resources/views/partials/top_nav.blade.php
+@@ -79,9 +79,6 @@
+         </ul>
+ 
+         <ul class="right-navbar">
+-            <li class="dropdown hoe-rheader-submenu message-notification left-min-30 mobile-hide" style="margin-right:10px;">
+-                <livewire:quick-search-dropdown />
+-            </li>
+             <li class="dropdown hoe-rheader-submenu hoe-header-profile">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                     <span>
+diff --git a/resources/views/vendor/log-viewer/bootstrap-4/_master.blade.php b/resources/views/vendor/log-viewer/bootstrap-4/_master.blade.php
+old mode 100755
+new mode 100644
+diff --git a/resources/views/vendor/log-viewer/bootstrap-4/dashboard.blade.php b/resources/views/vendor/log-viewer/bootstrap-4/dashboard.blade.php
+old mode 100755
+new mode 100644
+diff --git a/resources/views/vendor/log-viewer/bootstrap-4/logs.blade.php b/resources/views/vendor/log-viewer/bootstrap-4/logs.blade.php
+old mode 100755
+new mode 100644
+diff --git a/resources/views/vendor/log-viewer/bootstrap-4/show.blade.php b/resources/views/vendor/log-viewer/bootstrap-4/show.blade.php
+old mode 100755
+new mode 100644
+diff --git a/routes/api.php b/routes/api.php
+old mode 100755
+new mode 100644
+diff --git a/routes/web.php b/routes/web.php
+old mode 100755
+new mode 100644
